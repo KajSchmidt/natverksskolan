@@ -101,14 +101,22 @@
 
             $.getJSON("areas/" + starting_area + "/locations.json", function( data ) {
               $.each(data, function(key, item) {
-                createMarker(item.lat, item.long, item.title, item.content);
+
+                setTimeout(function () { //Create markers at random intervals for scatter effects
+                  createMarker(item.lat, item.long, item.title, item.content);
+                }, Math.floor((Math.random() * 1000)));
+
                 createModal(item.content, item.title,"areas/" + starting_area + "/" + item.content +".md");
+
               });
             });
 
-
-
           });
+
+          createModal("welcome", "Välkommen","areas/" + starting_area + "/welcome.md");
+          setTimeout(function () {
+            $('#welcome').modal();
+          }, 3000);
       }
 
 
