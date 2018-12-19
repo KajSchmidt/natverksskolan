@@ -8,12 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <script type="text/javascript">
+    <script>
+
+    var starting_area = "umea_0";
 
 
     </script>
-
-
 
 
     <style>
@@ -31,24 +31,34 @@
   </head>
   <body>
 
-  <div id="Map"></div>
 
+  <div class="fixed-top">
+    <div class="collapse" id="header">
+      <div class="bg-dark p-4">
+        <h5 class="text-white h4">Collapsed content</h5>
+        <span class="text-muted">Toggleable via the navbar brand.</span>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
 
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
+  <div id="Map">
+  </div>
+
+  <div class="fixed-bottom">
+    <nav class="navbar navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footer" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+    <div class="collapse" id="footer">
+      <div class="bg-dark p-4">
+        <h5 class="text-white h4">Collapsed content</h5>
+        <span class="text-muted">Toggleable via the navbar brand.</span>
       </div>
     </div>
   </div>
@@ -57,67 +67,86 @@
 
 
 
+
       <script>
-      function showMap() {
+      // Map functions
+      function createMap(setCenterLat, setCenterLong, setZoom) {
         var mapProp= {
-          center:new google.maps.LatLng(63.8256912,20.2631702),
+          center:new google.maps.LatLng(setCenterLat, setCenterLong),
           mapTypeId: google.maps.MapTypeId.SATELLITE,
-          zoom:15,
+          zoom:setZoom,
           disableDefaultUI: true
         };
         window.map = new google.maps.Map(document.getElementById("Map"),mapProp);
       }
 
-      function addMarker(varLAT, varLONG) {
-        var latlong = new google.maps.LatLng(varLAT, varLONG);
+      function createMarker(targetLAT, targetLONG, targetTitle, targetID) {
+        var latlong = new google.maps.LatLng(targetLAT, targetLONG);
         var marker = new google.maps.Marker({
           position:latlong,
           animation:google.maps.Animation.DROP,
+          title: targetTitle,
           map: map
         });
 
         marker.addListener('click', function() {
-          $('#exampleModalCenter').modal();
+          $('#'+targetID).modal();
         });
       }
 
 
       function loadArea() {
-        var area0 = [{
-            "title": "Hotell 1",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "lat": 63.8252048,
-            "long": 20.2672123
-          },
-          {
-            "title": "Hotell 2",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "lat": 63.8252829,
-            "long": 20.2583503
-          }];
+        $.getJSON("areas/" + starting_area + "/area.json", function( data ) {
+            createMap(63.8256912, 20.2631702, 15);
 
-          $.each(area0, function(i, item) {
-              addMarker(item.lat, item.long);
+            $.getJSON("areas/" + starting_area + "/locations.json", function( data ) {
+              $.each(data, function(key, item) {
+                createMarker(item.lat, item.long, item.title, item.content);
+                createModal(item.content, item.title,"areas/" + starting_area + "/" + item.content +".md");
+              });
+            });
+
+
+
           });
+      }
 
-        //var area = $.getJSON("area0.json", function( data ) {
-        //  $.each(area0, function(item) {
-        //    addMarker(item.lat, item.long);
-        //  });
-        //});
+
+      // Modal functions
+
+      function createModal(id, title, content) {
+
+        $.get(content, function(response) {
+          var markDown = new showdown.Converter();
+          html = markDown.makeHtml(response);
+
+          var modalHTML;
+          modalHTML += "'<div class='modal fade' id='";
+          modalHTML += id;
+          modalHTML += "' tabindex='-1' role='dialog' aria-hidden='true'><div class='modal-dialog modal-dialog-centered' role='document'><div class='modal-content'><div class='modal-header'><h5 class='modal-title'>";
+          modalHTML += title;
+          modalHTML += "</h5><button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><div class='modal-body'>";
+          modalHTML += html;
+          modalHTML += "</div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div></div></div></div>";
+          $('body').append(modalHTML);
+
+        });
+
       }
 
       </script>
 
-
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPAAfie0o5Cv1cYCBxMlqie64j13Y2WUI&callback=showMap"
-      type="text/javascript"></script>
-
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Google maps api -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPAAfie0o5Cv1cYCBxMlqie64j13Y2WUI&callback=loadArea" type="text/javascript"></script>
+
+    <!-- Google maps api -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.js"></script>
+
+
   </body>
 </html>
