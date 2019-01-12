@@ -10,7 +10,7 @@
 
     <script>
 
-    var starting_area = "umea_0";
+    var active_area = "umea_0";
 
 
     </script>
@@ -80,7 +80,7 @@
         window.map = new google.maps.Map(document.getElementById("Map"),mapProp);
       }
 
-      function createMarker(targetLAT, targetLONG, targetTitle, targetID) {
+      function createMarker(targetLAT, targetLONG, targetTitle, content) {
         var latlong = new google.maps.LatLng(targetLAT, targetLONG);
         var marker = new google.maps.Marker({
           position:latlong,
@@ -90,38 +90,39 @@
         });
 
         marker.addListener('click', function() {
-          $('#'+targetID).modal();
+          //$('#'+targetID).modal();
+          createModal(targetTitle, "areas/" + active_area + "/" + content +".md");
         });
       }
 
 
       function loadArea() {
-        $.getJSON("areas/" + starting_area + "/area.json", function( data ) {
+        $.getJSON("areas/" + active_area + "/area.json", function( data ) {
             createMap(63.8256912, 20.2631702, 15);
 
-            $.getJSON("areas/" + starting_area + "/locations.json", function( data ) {
+            $.getJSON("areas/" + active_area + "/locations.json", function( data ) {
               $.each(data, function(key, item) {
 
                 setTimeout(function () { //Create markers at random intervals for scatter effects
                   createMarker(item.lat, item.long, item.title, item.content);
                 }, Math.floor((Math.random() * 1000)));
 
-                createModal(item.content, item.title,"areas/" + starting_area + "/" + item.content +".md");
+                //createModal(item.content, item.title,"areas/" + active_area + "/" + item.content +".md");
 
               });
             });
 
           });
 
-          createModal("welcome", "Välkommen","areas/" + starting_area + "/welcome.md");
-          setTimeout(function () {
-            $('#welcome').modal();
-          }, 3000);
+          //createModal("welcome", "Välkommen","areas/" + active_area+ "/welcome.md");
+          //setTimeout(function () {
+          //  $('#welcome').modal();
+          //}, 3000);
       }
 
 
       // Modal functions
-
+      /*
       function createModal(id, title, content) {
 
         $.get(content, function(response) {
@@ -141,6 +142,29 @@
         });
 
       }
+      */
+
+      function createModal(title, content) {
+
+        $('#infowindows').remove();
+
+        $.get(content, function(response) {
+          var markDown = new showdown.Converter();
+          html = markDown.makeHtml(response);
+
+          var modalHTML;
+          modalHTML += "'<div class='modal fade' id='infowindows' tabindex='-1' role='dialog' aria-hidden='true'><div class='modal-dialog modal-dialog-centered modal-lg' role='document'><div class='modal-content'><div class='modal-header bg-secondary'><h6 class='modal-title text-light'>";
+          modalHTML += title;
+          modalHTML += "</h5><button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><div class='modal-body'>";
+          modalHTML += html;
+          modalHTML += "</div></div></div></div>";
+          $('body').append(modalHTML);
+
+          $('#infowindows').modal();
+
+        });
+
+      }
 
       </script>
 
@@ -152,7 +176,7 @@
     <!-- Google maps api -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPAAfie0o5Cv1cYCBxMlqie64j13Y2WUI&callback=loadArea" type="text/javascript"></script>
 
-    <!-- Google maps api -->
+    <!-- Showdown library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.js"></script>
 
 
