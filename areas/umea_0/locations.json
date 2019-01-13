@@ -1,56 +1,8 @@
 [
   {
-    "title": "Hotell 1",
-    "content": "hotell_1",
-    "lat": 63.8252048,
-    "long": 20.2672123
-  },
-  {
-    "title": "Hotell 2",
-    "content": "hotell_2",
-    "lat": 63.8252829,
-    "long": 20.2583503
-  },
-  {
-    "title": "Hotell 3",
-    "content": "hotell_3",
-    "lat": 63.8232259,
-    "long": 20.2543253
-  },
-  {
-    "title": "Hotell 4",
-    "content": "hotell_4",
-    "lat": 63.8242449,
-    "long": 20.2554543
-  },
-  {
-    "title": "Hotell 5",
-    "content": "hotell_5",
-    "lat": 63.8242569,
-    "long": 20.2563563
-  },
-  {
-    "title": "Hotell 6",
-    "content": "hotell_6",
-    "lat": 63.8272679,
-    "long": 20.2573673
-  },
-  {
-    "title": "Hotell 7",
-    "content": "hotell_7",
-    "lat": 63.8242789,
-    "long": 20.2563783
-  },
-  {
-    "title": "Hotell 8",
-    "content": "hotell_8",
-    "lat": 63.8262899,
-    "long": 20.2523893
-  },
-  {
-    "title": "Hotell 9",
-    "content": "hotell_9",
-    "lat": 63.8222919,
-    "long": 20.2573913
+    "title": "PL Revision",
+    "content": "kontor_1a",
+    "lat": 63.8249697,
+    "long": 20.2661621
   }
 ]

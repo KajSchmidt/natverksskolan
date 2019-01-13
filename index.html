@@ -22,6 +22,7 @@
           height:100vh;
           background-color:#170f23;
         }
+
     </style>
 
 
@@ -31,7 +32,7 @@
   </head>
   <body>
 
-
+<!--
   <div class="fixed-top">
     <div class="collapse" id="header">
       <div class="bg-dark p-4">
@@ -40,15 +41,19 @@
       </div>
     </div>
     <nav class="navbar navbar-dark bg-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler center" type="button" data-toggle="collapse" data-target="#header" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </nav>
   </div>
+-->
+
 
   <div id="Map">
   </div>
 
+
+<!---
   <div class="fixed-bottom">
     <nav class="navbar navbar-dark bg-dark">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footer" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +67,7 @@
       </div>
     </div>
   </div>
-
+-->
 
 
 
@@ -90,7 +95,6 @@
         });
 
         marker.addListener('click', function() {
-          //$('#'+targetID).modal();
           createModal(targetTitle, "areas/" + active_area + "/" + content +".md");
         });
       }
@@ -107,7 +111,6 @@
                   createMarker(item.lat, item.long, item.title, item.content);
                 }, Math.floor((Math.random() * 1000)));
 
-                //createModal(item.content, item.title,"areas/" + active_area + "/" + item.content +".md");
 
               });
             });
@@ -122,27 +125,7 @@
 
 
       // Modal functions
-      /*
-      function createModal(id, title, content) {
 
-        $.get(content, function(response) {
-          var markDown = new showdown.Converter();
-          html = markDown.makeHtml(response);
-
-          var modalHTML;
-          modalHTML += "'<div class='modal fade' id='";
-          modalHTML += id;
-          modalHTML += "' tabindex='-1' role='dialog' aria-hidden='true'><div class='modal-dialog modal-dialog-centered' role='document'><div class='modal-content'><div class='modal-header'><h5 class='modal-title'>";
-          modalHTML += title;
-          modalHTML += "</h5><button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><div class='modal-body'>";
-          modalHTML += html;
-          modalHTML += "</div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div></div></div></div>";
-          $('body').append(modalHTML);
-
-        });
-
-      }
-      */
 
       function createModal(title, content) {
 
@@ -153,7 +136,7 @@
           html = markDown.makeHtml(response);
 
           var modalHTML;
-          modalHTML += "'<div class='modal fade' id='infowindows' tabindex='-1' role='dialog' aria-hidden='true'><div class='modal-dialog modal-dialog-centered modal-lg' role='document'><div class='modal-content'><div class='modal-header bg-secondary'><h6 class='modal-title text-light'>";
+          modalHTML += "'<div class='modal fade' id='infowindows' tabindex='-1' role='dialog' aria-hidden='true'><div class='modal-dialog modal-dialog-centered modal-lg' role='document'><div class='modal-content'><div class='modal-header bg-info'><h6 class='modal-title text-light'>";
           modalHTML += title;
           modalHTML += "</h5><button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><div class='modal-body'>";
           modalHTML += html;
