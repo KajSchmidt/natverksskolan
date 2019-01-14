@@ -91,8 +91,10 @@
           position:latlong,
           animation:google.maps.Animation.DROP,
           title: targetTitle,
+          icon: 'pin-office.png',
           map: map
         });
+
 
         marker.addListener('click', function() {
           createModal(targetTitle, "areas/" + active_area + "/" + content +".md");
