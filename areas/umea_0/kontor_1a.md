@@ -8,6 +8,8 @@ De har ett flertal stationära datorer som ska ha trådbunden uppkoppling och n�
 Den mesta hårdvara är redan på plats så det enda som behöver göras är att koppla ihop och konfigurera allt. Fyra Accesspunkter ligger fortfarande i "förrådet" och behöver placeras ut innan de kopplas in.
 
 [Ladda ner ritning](/natverksskolan/areas/umea_0/kontor_1a.pkt)
+
+[Hitta hjälp](https://github.com/NTI-Gymnasiet/natverksskolan/wiki)
 ___
 
 #### Funktionskontroll
