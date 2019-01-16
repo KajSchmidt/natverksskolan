@@ -85,13 +85,13 @@
         window.map = new google.maps.Map(document.getElementById("Map"),mapProp);
       }
 
-      function createMarker(targetLAT, targetLONG, targetTitle, content) {
+      function createMarker(targetLAT, targetLONG, targetTitle, content, type) {
         var latlong = new google.maps.LatLng(targetLAT, targetLONG);
         var marker = new google.maps.Marker({
           position:latlong,
           animation:google.maps.Animation.DROP,
           title: targetTitle,
-          icon: 'pin-office.png',
+          icon: 'pin-'+ type +'.png',
           map: map
         });
 
@@ -110,7 +110,7 @@
               $.each(data, function(key, item) {
 
                 setTimeout(function () { //Create markers at random intervals for scatter effects
-                  createMarker(item.lat, item.long, item.title, item.content);
+                  createMarker(item.lat, item.long, item.title, item.content, item.type);
                 }, Math.floor((Math.random() * 1000)));
 
 
