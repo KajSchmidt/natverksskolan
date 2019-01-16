@@ -1,4 +1,7 @@
 ### PL Revision AB
+**Kontrakt A**
+
+<a class="btn btn-outline-info" href="index.html?location=kontor_1" role="button"><< Tillbaka</a>
 
 Revisionsbyrån PL Revision AB har anlitat er för att installera nätverket i deras nya kontor.
 Det är ett en enkelt kontorsnät för att komma åt internet och skrivare från kontor och mötesrum.
