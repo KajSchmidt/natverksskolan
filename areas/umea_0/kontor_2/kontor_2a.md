@@ -1,12 +1,12 @@
 ### Vita Tänders Tandvård AB
 **Kontrakt A**
 
-<a class="btn btn-outline-info" href="index.html?location=kontor_2" role="button"><< Tillbaka</a>
+<button class="btn btn-outline-info" onclick="goTo('kontor_2/kontor_2.md')"><< Tillbaka</button>
 
 
 Tandläkarna på Vita Tänders Tandvård..
 
-[Ladda ner ritning](/natverksskolan/areas/umea_0/kontor_2a.pkt)
+[Ladda ner ritning](/natverksskolan/areas/umea_0/kontor_2/kontor_2a.pkt)
 
 ___
 

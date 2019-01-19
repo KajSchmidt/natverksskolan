@@ -1,7 +1,7 @@
 ### PL Revision AB
 **Kontrakt A**
 
-<a class="btn btn-outline-info" href="index.html?location=kontor_1" role="button"><< Tillbaka</a>
+<button class="btn btn-outline-info" onclick="goTo('kontor_1/kontor_1.md')"><< Tillbaka</button>
 
 Revisionsbyrån PL Revision AB har anlitat er för att installera nätverket i deras nya kontor.
 Det är ett en enkelt kontorsnät för att komma åt internet och skrivare från kontor och mötesrum.
@@ -10,9 +10,7 @@ De har ett flertal stationära datorer som ska ha trådbunden uppkoppling och n�
 
 Den mesta hårdvara är redan på plats så det enda som behöver göras är att koppla ihop och konfigurera allt. Fyra Accesspunkter ligger fortfarande i "förrådet" och behöver placeras ut innan de kopplas in.
 
-[Ladda ner ritning](/natverksskolan/areas/umea_0/kontor_1a.pkt)
-
-[Hitta hjälp](https://github.com/NTI-Gymnasiet/natverksskolan/wiki)
+[Ladda ner ritning](/natverksskolan/areas/umea_0/kontor_1/kontor_1a.pkt)
 ___
 
 #### Funktionskontroll

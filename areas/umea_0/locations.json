@@ -1,16 +1,23 @@
 [
   {
     "title": "PL Revision",
-    "content": "kontor_1",
+    "content": "kontor_1/kontor_1.md",
     "type": "office",
     "lat": 63.8249697,
     "long": 20.2661621
   },
   {
     "title": "Vita Tänders Tandvård",
-    "content": "kontor_2",
+    "content": "kontor_2/kontor_2.md",
     "type": "office",
     "lat": 63.8281024,
     "long": 20.2511672
+  },
+  {
+    "title": "NTL",
+    "content": "kontor_6/kontor_6.md",
+    "type": "office",
+    "lat": 63.8219803,
+    "long": 20.2517275
   }
 ]
