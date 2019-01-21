@@ -10,7 +10,7 @@ De har ett flertal stationära datorer som ska ha trådbunden uppkoppling och n�
 
 Datorer är redan på plats så det som behöver göras är placera ut övrig utrustning, koppla ihop och konfigurera allt. Internetuppkoppling är redan levererad och konfigurerad av ISP så den behöver inte ändras på.
 
-[Ladda ner ritning](/natverksskolan/areas/umea_0/kontor_4a/kontor_4a.pkt)
+[Ladda ner ritning](/natverksskolan/areas/umea_0/kontor_4/kontor_4a.pkt)
 ___
 
 #### Funktionskontroll
