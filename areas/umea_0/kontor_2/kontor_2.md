@@ -2,7 +2,7 @@
 
 ### Vita Tänders Tandvård AB
 
-Vita Tänders Tandvård är en privat tandläkarmottagning med ca 10 personer i personalen. Företaget använder externa tjänster och system och har därför inga egna servrar och vill ha så lite egen utrusning att hantera som möjligt. Fokuspunkter är säkehet, trådlöshet och enkelhet. 
+Vita Tänders Tandvård är en privat tandläkarmottagning med ca 10 personer i personalen. Företaget använder externa tjänster och system och har därför inga egna servrar och vill ha så lite egen utrusning att hantera som möjligt. Fokuspunkter är säkehet, trådlöshet och enkelhet.
 
 ___
 
@@ -10,3 +10,4 @@ ___
 
 
 <button class="btn btn-info btn-block" onclick="goTo('kontor_2/kontor_2a.md')">Kontrakt A</button>
+<button class="btn btn-info btn-block" onclick="goTo('kontor_2/kontor_2b.md')">Kontrakt B</button>
