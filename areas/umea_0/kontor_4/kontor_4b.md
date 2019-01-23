@@ -38,6 +38,7 @@ ___
 - Client name: MIAB
 - Client IP: (Controllerns ip)
 - Shared secret: SzzB90tXDhVp
+- Local switching / Central Authentication
 
 ##### Användare
 

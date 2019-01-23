@@ -14,8 +14,8 @@ Datorer är redan på plats så det som behöver göras är placera ut övrig ut
 ___
 
 #### Funktionskontroll
-- Alla datorer kan gå in på google.com
-- Alla datorer kan pinga skrivarna
+- Alla datorer (utom management) kan gå in på google.com
+- Alla datorer (utom management) kan pinga skrivarna
 - Även efter omstart är all nätverksutrustning skyddade mot obehörig inloggning och anslutning
 
 ___
