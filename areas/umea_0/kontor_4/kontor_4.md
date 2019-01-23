@@ -11,3 +11,4 @@ ___
 
 
 <button class="btn btn-info btn-block" onclick="goTo('kontor_4/kontor_4a.md')">Kontrakt A</button>
+<button class="btn btn-info btn-block" onclick="goTo('kontor_4/kontor_4b.md')">Kontrakt B</button>
