@@ -21,6 +21,7 @@
 
 
     <style>
+
         #Map {
           width:100%;
           height:100vh;
@@ -33,9 +34,20 @@
           height: 100px;
           width: 100px;
           position: absolute;
-          bottom: 20px;
+          bottom: 40px;
           right: 20px;
           z-index: 1000;
+          cursor: pointer;
+        }
+
+        #footer {
+          max-height: 80vh;
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
+
+        .card {
+          max-width: 18rem;
           cursor: pointer;
         }
 
@@ -47,6 +59,21 @@
 
 
   <div id="Map">
+  </div>
+
+
+  <div class="fixed-bottom">
+    <nav class="navbar navbar-dark bg-dark">
+      <button class="navbar-toggler mx-auto btn btn-sm" type="button" data-toggle="collapse" data-target="#footer" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-angle-up"></i>
+      </button>
+    </nav>
+    <div class="collapse" id="footer">
+      <div class="bg-dark p-4 card-deck" id="footer-content">
+
+
+    </div>
+    </div>
   </div>
 
   <div id="NTI-logo" onclick="window.open('https://www.ntigymnasiet.se/');">
@@ -89,6 +116,9 @@
             $.getJSON("areas/" + active_area + "/locations.json", function( data ) {
               $.each(data, function(key, item) {
 
+                //create card in footer
+                createCard(item.title, item.content, item.type);
+
                 setTimeout(function () { //Create markers at random intervals for scatter effects
                   createMarker(item.lat, item.long, item.title, item.content, item.type);
                 }, Math.floor((Math.random() * 1000)));
@@ -107,6 +137,35 @@
           }
       }
 
+      //Footer functions
+
+      function createCard(title, content, type) {
+        var new_card_outer = document.createElement("DIV");
+        new_card_outer.setAttribute("class", "card text-white bg-primary mb-3");
+        new_card_outer.setAttribute("onclick", "openModal('areas/"+ active_area + "/" + content +"')");
+
+        var new_card_inner = document.createElement("DIV");
+        new_card_inner.setAttribute("class", "card-body")
+
+        var new_card_title = document.createElement("H5");
+        new_card_title.setAttribute("class", "card-title")
+        new_card_title.innerHTML = title;
+
+        var new_card_text = document.createElement("P");
+        new_card_text.setAttribute("class", "card-text")
+        new_card_text.innerHTML = "Beskrivning";
+
+        new_card_inner.appendChild(new_card_title);
+        new_card_inner.appendChild(new_card_text);
+        new_card_outer.appendChild(new_card_inner);
+
+        $("#footer-content").append(new_card_outer)
+
+      }
+
+
+
+
 
       // Modal functions
 
@@ -124,6 +183,9 @@
         loadModal(content);
 
         $('#infoModal').modal();
+        $("#footer").collapse("hide");
+
+
       }
 
       function loadModal(content) {
@@ -162,6 +224,8 @@
     <!-- Showdown library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.js"></script>
 
+    <!-- Icon library -->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.0/js/all.js" integrity="sha384-qD/MNBVMm3hVYCbRTSOW130+CWeRIKbpot9/gR1BHkd7sIct4QKhT1hOPd+2hO8K" crossorigin="anonymous"></script>
 
   </body>
 </html>
