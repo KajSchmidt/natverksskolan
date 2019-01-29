@@ -77,7 +77,7 @@
 
 
         marker.addListener('click', function() {
-          createModal("areas/" + active_area + "/" + content);
+          openModal("areas/" + active_area + "/" + content);
         });
       }
 
@@ -103,7 +103,7 @@
           var url = new URL(url_string);
           var location = url.searchParams.get("location");
           if (location) {
-            createModal("areas/" + active_area + "/" + location);
+            openModal("areas/" + active_area + "/" + location);
           }
       }
 
@@ -112,30 +112,40 @@
 
 
       function goTo(content) {
-        createModal("areas/" + active_area + "/" + content);
+        loadModal("areas/" + active_area + "/" + content);
       }
 
-      function createModal(content) {
 
-        $('#infowindows').remove();
-        $('.modal-backdrop').remove();
+      function openModal(content) {
+        if ($('#infoModal').length == 0) {
+          createModal();
+        }
+
+        loadModal(content);
+
+        $('#infoModal').modal();
+      }
+
+      function loadModal(content) {
 
         $.get(content, function(response) {
           var markDown = new showdown.Converter();
           html = markDown.makeHtml(response);
+          $("#infoModalContent").empty();
+          $("#infoModalContent").append(html);
+        });
+
+      }
+
+      function createModal() {
 
           var modalHTML;
-          modalHTML += "'<div class='modal fade' id='infowindows' tabindex='-1' role='dialog' aria-hidden='true'><div class='modal-dialog modal-dialog-centered modal-lg' role='document'>"
+          modalHTML += "'<div class='modal fade' id='infoModal' tabindex='-1' role='dialog' aria-hidden='true'><div class='modal-dialog modal-dialog-centered modal-lg' role='document'>"
           modalHTML += "<div class='modal-content'><div class='modal-header'><h6 class='modal-title text-light'>";
-          modalHTML += "<a class='btn btn-light' href='https://github.com/NTI-Gymnasiet/natverksskolan/wiki' target='_blank'>?</a>"
-          modalHTML += "</h6><button type='button' class='close' data-dismiss='modal' aria-label='Close' data-target='#infowindows'><span aria-hidden='true'>&times;</span></button></div><div class='modal-body'>";
-          modalHTML += html;
+          modalHTML += "<a class='btn btn-light' href='https://github.com/NTIG-Umea/natverksskolan/wiki' target='_blank'>?</a>"
+          modalHTML += "</h6><button type='button' class='close' data-dismiss='modal' aria-label='Close' data-target='#infoModal'><span aria-hidden='true'>&times;</span></button></div><div id='infoModalContent' class='modal-body'>";
           modalHTML += "</div></div></div></div>";
           $('body').append(modalHTML);
-
-          $('#infowindows').modal();
-
-        });
 
       }
 
