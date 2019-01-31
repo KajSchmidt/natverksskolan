@@ -1,29 +1,41 @@
 [
   {
+    "id": "kontor_1",
     "title": "PL Revision",
     "content": "kontor_1/kontor_1.md",
     "type": "office",
+    "image": "kontor_1/kontor_1.jpg",
+    "description": "",
     "lat": 63.8249697,
     "long": 20.2661621
   },
   {
+    "id": "kontor_2",
     "title": "Vita Tänders Tandvård",
     "content": "kontor_2/kontor_2.md",
     "type": "office",
+    "image": "kontor_2/kontor_2.jpg",
+    "description": "",
     "lat": 63.8281024,
     "long": 20.2511672
   },
   {
+    "id": "kontor_4",
     "title": "MIAB",
     "content": "kontor_4/kontor_4.md",
     "type": "office",
+    "image": "kontor_4/kontor_4.jpg",
+    "description": "MIAB är ett nationellt företag inom bygg och entrepenad med kontor, verkstäder och lokaler på många ställen i Sverige. Kontoret i Umeå har en personal på ca 25 personer och hanterar planer, samordning och ekonomi för alla projekt inom regionen. Fokuspunkter för kontorets IT är stabilitet och ekonomi.",
     "lat": 63.8261927,
     "long": 20.2542813
   },
   {
+    "id": "kontor_6",
     "title": "NTL",
     "content": "kontor_6/kontor_6.md",
     "type": "office",
+    "image": "kontor_6/kontor_6.jpg",
+    "description": "",
     "lat": 63.8219803,
     "long": 20.2517275
   }
