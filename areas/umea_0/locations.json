@@ -27,6 +27,18 @@
     "long": 20.2511672
   },
   {
+    "id": "kontor_3",
+    "title": "Norrvind",
+    "content": {
+                "Kontrakt A":"kontor_3/kontor_3a.md"
+              },
+    "type": "office",
+    "image": "kontor_3/kontor_3.jpg",
+    "description": "Norrvind är ett företag pm ca 50 personer som jobbar med design, entrepenad och drift av vindkraftsparker från Umeå. Företaget är mycket expansivt och planerar att växa kraftigt de närmaste åren. Fokuspunkter för kontoret är framtidsäkring, expansion och driftsäkerhet.",
+    "lat": 63.830258,
+    "long": 20.261461
+  },
+  {
     "id": "kontor_4",
     "title": "MIAB",
     "content": {
