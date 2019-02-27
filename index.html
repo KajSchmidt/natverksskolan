@@ -108,7 +108,7 @@
                 createLocationCard(item.id, item.title, item.type, item.image);
 
                 //create hiddens modals for each location
-                createLocationModal(item.id, item.title, item.type, item.image, item.description, item.content);
+                createLocationModal(item.id, item.title, item.type, item.image, item.description, item.buttons);
 
                 //create markers on map for each location
                 setTimeout(function () { //Create markers at random intervals for scatter effects
@@ -273,7 +273,7 @@
 
 
       //Create separate modals for all locations
-      function createLocationModal(m_id, m_title, m_type, m_image, m_description, m_content) {
+      function createLocationModal(m_id, m_title, m_type, m_image, m_description, m_buttons) {
         var new_modal = document.createElement("DIV");
         new_modal.setAttribute("class", "modal fade");
         new_modal.setAttribute("id", m_id);
@@ -320,11 +320,11 @@
 
         var new_modal_button;
 
-        for (var content_item in m_content) {
+        for (var button_item in m_buttons) {
           new_modal_button = document.createElement("A");
           new_modal_button.setAttribute("class", "btn btn-dark text-white btn-block");
-          new_modal_button.setAttribute("onclick", "openMdModal('areas/"+ active_area + "/" + m_content[content_item] +"', '"+ m_id +"')");
-          new_modal_button.innerHTML = content_item;
+          new_modal_button.setAttribute("onclick", "openMdModal('areas/"+ active_area + "/" + m_buttons[button_item] +"', '"+ m_id +"')");
+          new_modal_button.innerHTML = button_item;
           new_modal_body.appendChild(new_modal_button);
         }
 
