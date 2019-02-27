@@ -30,7 +30,8 @@
     "id": "kontor_3",
     "title": "Norrvind",
     "content": {
-                "Kontrakt A":"kontor_3/kontor_3a.md"
+                "Kontrakt A":"kontor_3/kontor_3a.md",
+                "Kontrakt B":"kontor_3/kontor_3b.md"
               },
     "type": "office",
     "image": "kontor_3/kontor_3.jpg",
