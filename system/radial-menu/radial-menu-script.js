@@ -1,42 +1,73 @@
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+	$('.rmenu-item').mouseover(function(){
+		$('i',this).tooltip('show');
+	});
+	$('.rmenu-item').mouseout(function(){
+		$('i',this).tooltip('hide');
+	});
+});
+
+
 (function(){
 
-	var button = document.getElementById('cn-button'),
-    wrapper = document.getElementById('cn-wrapper'),
-    overlay = document.getElementById('cn-overlay');
+	var button_left = document.getElementById('rm-button-left'),
+    wrapper_left = document.getElementById('rm-wrapper-left'),
+		button_right = document.getElementById('rm-button-right'),
+	  wrapper_right = document.getElementById('rm-wrapper-right'),
+    overlay = document.getElementById('rm-overlay');
 
 	//open and close menu when the button is clicked
-	var open = false;
-	button.addEventListener('click', handler, false);
-	wrapper.addEventListener('click', cnhandle, false);
+	var left_open = false;
+	var right_open = false;
+	button_left.addEventListener('click', lhandler, false);
+	wrapper_left.addEventListener('click', cnhandle, false);
+	button_right.addEventListener('click', rhandler, false);
+	wrapper_right.addEventListener('click', cnhandle, false);
 
 	function cnhandle(e){
 		e.stopPropagation();
 	}
 
-	function handler(e){
+	function lhandler(e){
 		if (!e) var e = window.event;
 	 	e.stopPropagation();//so that it doesn't trigger click event on document
 
-	  	if(!open){
-	    	openNav();
+	  if(!left_open){
+				left_open= true;
+	    	openNav(wrapper_left);
 	  	}
 	 	else{
 	    	closeNav();
 	  	}
 	}
-	function openNav(){
-		open = true;
-	    button.innerHTML = "-";
-	    classie.add(overlay, 'on-overlay');
-	    classie.add(wrapper, 'opened-nav');
+
+	function rhandler(e){
+		if (!e) var e = window.event;
+	 	e.stopPropagation();//so that it doesn't trigger click event on document
+
+	  if(!right_open){
+				right_open = true;
+	    	openNav(wrapper_right);
+	  	}
+	 	else{
+	    	closeNav();
+	  	}
 	}
+
+
+	function openNav(target){
+	    classie.add(overlay, 'on-overlay');
+	    classie.add(target, 'opened-nav');
+	}
+
 	function closeNav(){
-		open = false;
-		button.innerHTML = "+";
+		left_open = false;
+		right_open = false;
 		classie.remove(overlay, 'on-overlay');
-		classie.remove(wrapper, 'opened-nav');
+		classie.remove(wrapper_left, 'opened-nav');
+		classie.remove(wrapper_right, 'opened-nav');
 	}
 	document.addEventListener('click', closeNav);
 
 })();
-

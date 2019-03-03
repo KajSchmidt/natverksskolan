@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 #Map {
   width:100%;
   height:100vh;
@@ -5,7 +9,7 @@
 }
 
 #site-logo {
-  background-image: url('nti-sitelogo-white.png');
+  background-image: url('/nti-sitelogo-white.png');
   background-size: contain;
   height: 100px;
   width: 100px;
@@ -14,6 +18,15 @@
   right: 20px;
   z-index: 1000;
   cursor: pointer;
+}
+
+#site-message {
+  width:600px;
+  margin-left: -300px;
+  position: fixed;
+  top:10px;
+  left:50%;
+  z-index: 100;
 }
 
 #footer {
