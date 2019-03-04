@@ -6,11 +6,15 @@
             $.getJSON("areas/" + active_area + "/locations.json", function( data ) {
               $.each(data, function(key, item) {
 
+                var buttons_object;
+                if (item.buttons == "") { buttons_object = "false"; }
+                else { buttons_object = item.buttons; }
+
                 //create card in footer for each location
-                createLocationCard(item.id, item.title, item.type, item.image, item.content, item.buttons);
+                createLocationCard(item.id, item.title, item.type, item.image, item.content, buttons_object);
 
                 //create hiddens modals for each location
-                createLocationModal(item.id, item.title, item.type, item.image, item.content, item.buttons);
+                createLocationModal(item.id, item.title, item.type, item.image, item.content, buttons_object);
 
                 //create markers on map for each location
                 setTimeout(function () { //Create markers at random intervals for scatter effects
@@ -73,7 +77,6 @@
         var new_card = document.createElement("DIV");
         new_card.setAttribute("id", "card_" + card_id);
         new_card.setAttribute("class", "card footer-cards bg-light");
-        new_card.setAttribute("onclick", "openLocationModal('"+ card_id +"')");
 
         /*
         var new_card_header= document.createElement("DIV");
@@ -86,10 +89,12 @@
         var new_card_image= document.createElement("IMG");
         new_card_image.setAttribute("class", "card-img-top");
         new_card_image.setAttribute("src", "areas/"+ active_area + "/" + card_image);
+        new_card_image.setAttribute("onclick", "openLocationModal('"+ card_id +"')");
         new_card.appendChild(new_card_image);
 
         var new_card_body = document.createElement("DIV");
         new_card_body.setAttribute("class", "card-body black");
+        new_card_body.setAttribute("onclick", "openLocationModal('"+ card_id +"')");
 
         var new_card_title = document.createElement("H6");
         new_card_title.setAttribute("class", "card-title");
@@ -104,8 +109,18 @@
 
         var new_card_footer = document.createElement("DIV");
         new_card_footer.setAttribute("class", "card-footer");
-        new_card_footer.innerHTML = "";
         new_card.appendChild(new_card_footer);
+
+
+        if (card_buttons != "false") {
+          for (var button_item in card_buttons) {
+            var new_card_button = document.createElement("A");
+            new_card_button.setAttribute("class", "btn text-white bg-"+ card_buttons[button_item][1]);
+            new_card_button.setAttribute("onclick", "openMdModal('areas/"+ active_area + "/" + card_buttons[button_item][0] +"', '"+ card_id +"')");
+            new_card_button.innerHTML = "<i class='material-icons'>stars</i>";
+            new_card_footer.appendChild(new_card_button);
+          }
+        }
 
 
         $("#footer-content").append(new_card)
@@ -147,7 +162,7 @@
         new_modal_close.setAttribute("class", "btn btn-light ml-auto");
         new_modal_close.setAttribute("data-dismiss", "modal");
         new_modal_close.setAttribute("data-target", "md-modal");
-        new_modal_close.innerHTML = "<i class='fas fa-times small'></i>";
+        new_modal_close.innerHTML = "<i class='material-icons'>close</i>";
         new_modal_header.appendChild(new_modal_close);
 
         new_modal_content.appendChild(new_modal_header);
@@ -204,7 +219,7 @@
         new_modal_close.setAttribute("class", "btn btn-light ml-auto");
         new_modal_close.setAttribute("data-dismiss", "modal");
         new_modal_close.setAttribute("data-target", modal_id);
-        new_modal_close.innerHTML = "<i class='fas fa-times small'></i>";
+        new_modal_close.innerHTML = "<i class='material-icons'>close</i>";
         new_modal_header.appendChild(new_modal_close);
 
         new_modal_content.appendChild(new_modal_header);
@@ -226,14 +241,15 @@
         new_modal_text.setAttribute("class", "modal-text");
         new_modal_body.appendChild(new_modal_text);
 
-        var new_modal_button;
 
-        for (var button_item in modal_buttons) {
-          new_modal_button = document.createElement("A");
-          new_modal_button.setAttribute("class", "btn bg-maroon text-white btn-block");
-          new_modal_button.setAttribute("onclick", "openMdModal('areas/"+ active_area + "/" + modal_buttons[button_item] +"', '"+ modal_id +"')");
-          new_modal_button.innerHTML = button_item;
-          new_modal_body.appendChild(new_modal_button);
+        if (modal_buttons != "false") {
+          for (var button_item in modal_buttons) {
+            var new_modal_button = document.createElement("A");
+            new_modal_button.setAttribute("class", "btn text-white btn-block bg-"+ modal_buttons[button_item][1]);
+            new_modal_button.setAttribute("onclick", "openMdModal('areas/"+ active_area + "/" + modal_buttons[button_item][0] +"', '"+ modal_id +"')");
+            new_modal_button.innerHTML = button_item;
+            new_modal_body.appendChild(new_modal_button);
+          }
         }
 
         new_modal_content.appendChild(new_modal_body);

@@ -30,6 +30,9 @@ body {
 .footer-cards {
   max-width: 12rem;
   max-height: 20rem;
+}
+
+.footer-cards .card-body, .footer-cards .card-img-top {
   cursor: pointer;
 }
 
@@ -53,5 +56,19 @@ body {
   line-height: 12px;        /* fallback */
   max-height: 72px;       /* fallback */
 }
+
+.footer-cards .card-footer a {
+  padding  : .25rem .4rem;
+  font-size  : .8rem;
+  line-height  : .5;
+  border-radius : .2rem;
+  margin-left: 3px;
+}
+
+.footer-cards .card-footer a i {
+  font-size  : .8rem;
+}
+
+
 
 /* Custom bootstrap colors */
