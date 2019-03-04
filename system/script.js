@@ -14,7 +14,7 @@
 
                 //create markers on map for each location
                 setTimeout(function () { //Create markers at random intervals for scatter effects
-                  createMarker(item.id, item.lat, item.long, item.title, item.type);
+                  createMarker(item.id, item.title, item.type, item.lat, item.long,);
                 }, Math.floor((Math.random() * 1000)));
 
 
@@ -49,7 +49,7 @@
         window.map = new google.maps.Map(document.getElementById("Map"),mapProp);
       }
 
-      function createMarker(targetID, targetLAT, targetLONG, targetTitle, targetTYPE) {
+      function createMarker(targetID, targetTitle, targetTYPE, targetLAT, targetLONG) {
         var latlong = new google.maps.LatLng(targetLAT, targetLONG);
         var marker = new google.maps.Marker({
           position:latlong,
