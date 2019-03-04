@@ -1,0 +1,1 @@
+Norrvind är ett företag pm ca 50 personer som jobbar med design, entrepenad och drift av vindkraftsparker från Umeå. Företaget är mycket expansivt och planerar att växa kraftigt de närmaste åren. Fokuspunkter för kontoret är framtidsäkring, expansion och driftsäkerhet.

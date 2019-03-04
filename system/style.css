@@ -30,8 +30,28 @@ body {
 .footer-cards {
   max-width: 12rem;
   max-height: 20rem;
-  overflow: hidden;
   cursor: pointer;
+}
+
+.footer-cards .card-body .card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  line-height: 1rm;        /* fallback */
+  max-height: 1rm;       /* fallback */
+}
+
+.footer-cards .card-body .card-text {
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6; /* number of lines to show */
+  line-height: 12px;        /* fallback */
+  max-height: 72px;       /* fallback */
 }
 
 /* Custom bootstrap colors */

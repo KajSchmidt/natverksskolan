@@ -7,10 +7,10 @@
               $.each(data, function(key, item) {
 
                 //create card in footer for each location
-                createLocationCard(item.id, item.title, item.type, item.image);
+                createLocationCard(item.id, item.title, item.type, item.image, item.content, item.buttons);
 
                 //create hiddens modals for each location
-                createLocationModal(item.id, item.title, item.type, item.image, item.description, item.buttons);
+                createLocationModal(item.id, item.title, item.type, item.image, item.content, item.buttons);
 
                 //create markers on map for each location
                 setTimeout(function () { //Create markers at random intervals for scatter effects
@@ -69,10 +69,11 @@
 
       //Footer functions
 
-      function createLocationCard(id, title, type, image) {
+      function createLocationCard(card_id, card_title, card_type, card_image, card_content, card_buttons) {
         var new_card = document.createElement("DIV");
+        new_card.setAttribute("id", "card_" + card_id);
         new_card.setAttribute("class", "card footer-cards bg-light");
-        new_card.setAttribute("onclick", "openLocationModal('"+ id +"')");
+        new_card.setAttribute("onclick", "openLocationModal('"+ card_id +"')");
 
         /*
         var new_card_header= document.createElement("DIV");
@@ -84,20 +85,19 @@
 
         var new_card_image= document.createElement("IMG");
         new_card_image.setAttribute("class", "card-img-top");
-        new_card_image.setAttribute("src", "areas/"+ active_area + "/" + image);
+        new_card_image.setAttribute("src", "areas/"+ active_area + "/" + card_image);
         new_card.appendChild(new_card_image);
 
         var new_card_body = document.createElement("DIV");
-        new_card_body.setAttribute("class", "card-body");
+        new_card_body.setAttribute("class", "card-body black");
 
         var new_card_title = document.createElement("H6");
         new_card_title.setAttribute("class", "card-title");
-        new_card_title.innerHTML = title;
+        new_card_title.innerHTML = card_title;
         new_card_body.appendChild(new_card_title);
 
         var new_card_text = document.createElement("P");
         new_card_text.setAttribute("class", "card-text small");
-        new_card_text.innerHTML = "";
         new_card_body.appendChild(new_card_text);
 
         new_card.appendChild(new_card_body);
@@ -109,6 +109,13 @@
 
 
         $("#footer-content").append(new_card)
+
+        $.get("areas/"+ active_area + "/" + card_content, function(response) {
+          var markDown = new showdown.Converter();
+          html = markDown.makeHtml(response);
+          $('#card_'+card_id+' .card-body .card-text').append(html);
+        });
+
 
       }
 
@@ -175,10 +182,10 @@
 
 
       //Create separate modals for all locations
-      function createLocationModal(m_id, m_title, m_type, m_image, m_description, m_buttons) {
+      function createLocationModal(modal_id, modal_title, modal_type, modal_image, modal_content, modal_buttons) {
         var new_modal = document.createElement("DIV");
         new_modal.setAttribute("class", "modal fade");
-        new_modal.setAttribute("id", m_id);
+        new_modal.setAttribute("id", "modal_" + modal_id);
         new_modal.setAttribute("tabindex", "-1");
         new_modal.setAttribute("role", "dialog");
         new_modal.setAttribute("aria-hidden", "true");
@@ -196,7 +203,7 @@
         var new_modal_close = document.createElement("A");
         new_modal_close.setAttribute("class", "btn btn-light ml-auto");
         new_modal_close.setAttribute("data-dismiss", "modal");
-        new_modal_close.setAttribute("data-target", m_id);
+        new_modal_close.setAttribute("data-target", modal_id);
         new_modal_close.innerHTML = "<i class='fas fa-times small'></i>";
         new_modal_header.appendChild(new_modal_close);
 
@@ -204,7 +211,7 @@
 
         var new_modal_image = document.createElement("IMG");
         new_modal_image.setAttribute("class", "card-img-top");
-        new_modal_image.setAttribute("src", "areas/"+ active_area + "/" + m_image);
+        new_modal_image.setAttribute("src", "areas/"+ active_area + "/" + modal_image);
         new_modal_content.appendChild(new_modal_image);
 
         var new_modal_body = document.createElement("DIV");
@@ -212,20 +219,19 @@
 
         var new_modal_title = document.createElement("H4");
         new_modal_title.setAttribute("class", "modal-title");
-        new_modal_title.innerHTML =m_title;
+        new_modal_title.innerHTML =modal_title;
         new_modal_body.appendChild(new_modal_title);
 
         var new_modal_text = document.createElement("P");
         new_modal_text.setAttribute("class", "modal-text");
-        new_modal_text.innerHTML =m_description;
         new_modal_body.appendChild(new_modal_text);
 
         var new_modal_button;
 
-        for (var button_item in m_buttons) {
+        for (var button_item in modal_buttons) {
           new_modal_button = document.createElement("A");
           new_modal_button.setAttribute("class", "btn bg-maroon text-white btn-block");
-          new_modal_button.setAttribute("onclick", "openMdModal('areas/"+ active_area + "/" + m_buttons[button_item] +"', '"+ m_id +"')");
+          new_modal_button.setAttribute("onclick", "openMdModal('areas/"+ active_area + "/" + modal_buttons[button_item] +"', '"+ modal_id +"')");
           new_modal_button.innerHTML = button_item;
           new_modal_body.appendChild(new_modal_button);
         }
@@ -238,18 +244,24 @@
 
         $("body").append(new_modal)
 
+        $.get("areas/"+ active_area + "/" + modal_content, function(response) {
+          var markDown = new showdown.Converter();
+          html = markDown.makeHtml(response);
+          $('#modal_'+modal_id+' .modal-body .modal-text').append(html);
+        });
+
       }
 
       function openLocationModal(id) {
         $("#footer").collapse("hide");
         $("#md-modal").modal("hide");
-        $("#"+id).modal("show");
+        $("#modal_"+id).modal("show");
       }
 
 
       function openMdModal(md, m_id) {
         $("#footer").collapse("hide");
-        $("#"+ m_id).modal("hide");
+        $("#modal_"+ m_id).modal("hide");
 
         setTimeout(function(){ //Must wait for previus hide to avoid bugs
           loadMdModal(md);
