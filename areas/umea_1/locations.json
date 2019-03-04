@@ -1,0 +1,15 @@
+[
+  {
+    "id": "kontor_1",
+    "title": "PL Revision",
+    "buttons": {
+                "Kontrakt A":"kontor_1/kontor_1a.md",
+                "Kontrakt B":"kontor_1/kontor_1b.md"
+              },
+    "type": "office",
+    "image": "kontor_1/kontor_1.jpg",
+    "description": "PL Revision är en klassiskt kontor med ca 30 anställda som har fasta arbetsplaser och flera mötesrum i lokaler som blandar trådbundet och strådlösa nätverk.",
+    "lat": 63.8249697,
+    "long": 20.2661621
+  }
+]

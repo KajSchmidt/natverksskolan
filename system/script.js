@@ -224,7 +224,7 @@
 
         for (var button_item in m_buttons) {
           new_modal_button = document.createElement("A");
-          new_modal_button.setAttribute("class", "btn btn-dark text-white btn-block");
+          new_modal_button.setAttribute("class", "btn bg-maroon text-white btn-block");
           new_modal_button.setAttribute("onclick", "openMdModal('areas/"+ active_area + "/" + m_buttons[button_item] +"', '"+ m_id +"')");
           new_modal_button.innerHTML = button_item;
           new_modal_body.appendChild(new_modal_button);

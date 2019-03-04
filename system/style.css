@@ -20,14 +20,6 @@ body {
   cursor: pointer;
 }
 
-#site-message {
-  width:600px;
-  margin-left: -300px;
-  position: fixed;
-  top:10px;
-  left:50%;
-  z-index: 100;
-}
 
 #footer {
   max-height: 80vh;
@@ -41,3 +33,5 @@ body {
   overflow: hidden;
   cursor: pointer;
 }
+
+/* Custom bootstrap colors */

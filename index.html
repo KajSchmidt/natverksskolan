@@ -12,12 +12,22 @@
 
     <link rel="stylesheet" type="text/css" href="system/radial-menu/radial-menu-style.css">
     <link rel="stylesheet" type="text/css" href="system/style.css">
+    <link rel="stylesheet" type="text/css" href="system/colors.css">
 
     <script>
 
     // Settings
+    var default_area = "umea_0";
 
-    var active_area = "umea_0";
+    var active_area = "";
+    if (!localStorage.getItem("area")) {
+      active_area = default_area;
+    }
+    else {
+      active_area = localStorage.getItem("area");
+    }
+
+
 
 
     </script>
@@ -37,14 +47,6 @@
   </head>
   <body>
 
-    <div id="site-message">
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Denna sida använder cookies för att spara inställningar.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    </div>
 
 
   <div id="Map">
@@ -55,12 +57,12 @@
   <!-- Radial Menu Left-->
 
 <div id="radial-menu-left">
-  <button class="rm-button btn-primary" id="rm-button-left"><i class="material-icons">info_outline</i></button>
+  <button class="rm-button bg-blue white" id="rm-button-left"><i class="material-icons">info_outline</i></button>
   <div class="rm-wrapper" id="rm-wrapper-left">
      <ul>
-         <li><a href="#" class="btn-light rmenu-item"><i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inställningar">settings</i></a></li>
-         <li><a href="#" class="btn-light rmenu-item"><i class="material-icons" data-toggle="tooltip" data-placement="right" title="Välj område">not_listed_location</i></a></li>
-         <li><a href="#" class="btn-light rmenu-item"><i class="material-icons" data-toggle="tooltip" data-placement="right" title="Om sidan">info</i></a></li>
+         <li><a href="#" class="bg-silver blue rmenu-item"><i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inställningar">settings</i></a></li>
+         <li><a href="#" class="bg-silver blue rmenu-item"><i class="material-icons" data-toggle="tooltip" data-placement="right" title="Välj område">not_listed_location</i></a></li>
+         <li><a href="#" class="bg-silver blue rmenu-item"><i class="material-icons" data-toggle="tooltip" data-placement="right" title="Om sidan">info</i></a></li>
      </ul>
   </div>
 </div>
@@ -69,12 +71,12 @@
 <!-- Radial Menu Right-->
 
 <div id="radial-menu-right">
-<button class="rm-button btn-success" id="rm-button-right"><i class="material-icons">help_outline</i></button>
+<button class="rm-button bg-olive white" id="rm-button-right"><i class="material-icons">help_outline</i></button>
 <div class="rm-wrapper" id="rm-wrapper-right">
    <ul>
-       <li><a href="#" class="btn-light rmenu-item"><i class="material-icons" data-toggle="tooltip" data-placement="left" title="Hur fungerar sidan?">help</i></a></li>
-       <li><a href="https://github.com/NTIG-Umea/natverksskolan/wiki" target="_blank" class="btn-light rmenu-item"><i class="material-icons" data-toggle="tooltip" data-placement="left" title="Hjälp med CLI-kod">code</i></a></li>
-       <li><a href="#" class="btn-light "><i class="material-icons" data-toggle="" data-placement="left" title="Tooltip #1"></i></a></li>
+       <li><a href="#" class="bg-silver olive rmenu-item"><i class="material-icons" data-toggle="tooltip" data-placement="left" title="Hur fungerar sidan?">help</i></a></li>
+       <li><a href="https://github.com/NTIG-Umea/natverksskolan/wiki" target="_blank" class="bg-silver olive rmenu-item"><i class="material-icons" data-toggle="tooltip" data-placement="left" title="Hjälp med CLI-kod">code</i></a></li>
+       <li><a href="#" class="bg-silver olive "><i class="material-icons" data-toggle="" data-placement="left" title="Tooltip #1"></i></a></li>
    </ul>
 </div>
 </div>
@@ -87,16 +89,16 @@
 
   <!-- footer menu -->
   <div class="fixed-bottom">
-    <nav class="navbar navbar-info bg-info">
+    <nav class="navbar bg-black white">
       <button class="navbar-toggler mx-auto btn btn-info btn-sm border-0 " type="button" data-toggle="collapse" data-target="#footer" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars small"></i>
       </button>
     </nav>
     <div class="collapse" id="footer">
-      <div class="bg-info p-4 card-deck" id="footer-content">
+      <div class="bg-black white p-4 card-deck" id="footer-content">
         <!-- Container for footer location cards -->
       </div>
-      <div class="bg-info p-4" id="footer-links">
+      <div class="bg-black white p-4" id="footer-links">
         <ul class="nav justify-content-center">
           <li class="nav-item"><a class="nav-link btn btn-light btn-sm m-1" href="https://github.com/NTIG-Umea/natverksskolan/blob/master/README.md" target="_blank">
             <i class="fas fa-info-circle"></i> README</a>
