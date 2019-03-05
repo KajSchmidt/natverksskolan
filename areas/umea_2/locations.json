@@ -1,15 +1,62 @@
 [
   {
     "id": "k1",
-    "title": "Kontor 1",
-    "buttons": {
-                "Kontrakt A: Nybyggnad": ["kontor_1/kontor_1a.md","olive"],
-                "Kontrakt B": ["kontor_1/kontor_1b.md", "maroon"]
-              },
+    "title": "?",
+    "buttons": "",
     "type": "office",
-    "image": "kontor_1/kontor_1.jpg",
-    "content": "kontor_1/kontor_1.md",
+    "image": "image.jpg",
+    "content": "location.md",
     "lat": 63.8249697,
     "long": 20.2661621
+  },
+  {
+    "id": "k2",
+    "title": "?",
+    "buttons": "",
+    "type": "office",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.8281024,
+    "long": 20.2511672
+  },
+  {
+    "id": "k3",
+    "title": "?",
+    "buttons": "",
+    "type": "office",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.830258,
+    "long": 20.261461
+  },
+  {
+    "id": "k4",
+    "title": "?",
+    "buttons": "",
+    "type": "office",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.8261927,
+    "long": 20.2542813
+  },
+  {
+    "id": "k5",
+    "title": "?",
+    "buttons": "",
+    "type": "office",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.825447,
+    "long": 20.264229
+  },
+  {
+    "id": "k6",
+    "title": "?",
+    "buttons": "",
+    "type": "office",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.8219803,
+    "long": 20.2517275
   }
 ]

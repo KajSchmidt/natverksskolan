@@ -7,8 +7,8 @@
                 "Kontrakt B": ["kontor_1/kontor_1b.md", "maroon"]
               },
     "type": "office",
-    "image": "kontor_1/kontor_1.jpg",
-    "content": "kontor_1/kontor_1.md",
+    "image": "kontor_1.jpg",
+    "content": "kontor_1.md",
     "lat": 63.8249697,
     "long": 20.2661621
   },
@@ -21,8 +21,8 @@
                 "Kontrakt C": ["kontor_2/kontor_2c.md", "blue"]
               },
     "type": "office",
-    "image": "kontor_2/kontor_2.jpg",
-    "content": "kontor_2/kontor_2.md",
+    "image": "kontor_2.jpg",
+    "content": "kontor_2.md",
     "lat": 63.8281024,
     "long": 20.2511672
   },
@@ -34,8 +34,8 @@
                 "Kontrakt B": ["kontor_3/kontor_3b.md", "orange"]
               },
     "type": "office",
-    "image": "kontor_3/kontor_3.jpg",
-    "content": "kontor_3/kontor_3.md",
+    "image": "kontor_3.jpg",
+    "content": "kontor_3.md",
     "lat": 63.830258,
     "long": 20.261461
   },
@@ -47,8 +47,8 @@
                 "Kontrakt B": ["kontor_4/kontor_4b.md", "orange"]
               },
     "type": "office",
-    "image": "kontor_4/kontor_4.jpg",
-    "content": "kontor_4/kontor_4.md",
+    "image": "kontor_4.jpg",
+    "content": "kontor_4.md",
     "lat": 63.8261927,
     "long": 20.2542813
   },
@@ -59,8 +59,8 @@
                 "Kontrakt A": ["kontor_6/kontor_6a.md","red"]
               },
     "type": "office",
-    "image": "kontor_6/kontor_6.jpg",
-    "content": "kontor_6/kontor_6.md",
+    "image": "kontor_6.jpg",
+    "content": "kontor_6.md",
     "lat": 63.8219803,
     "long": 20.2517275
   }

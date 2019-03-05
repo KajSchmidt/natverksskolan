@@ -59,7 +59,7 @@ $("#menu-about-site").click(function(){
 });
 
 $("#menu-help-site").click(function(){
-  loadMdModal("site.md");
+  loadMdModal("site_help.md");
 });
 
 $("#menu-help-area").click(function(){
@@ -209,7 +209,7 @@ function saveSettings(name, value) {
 
         var new_card_image= document.createElement("IMG");
         new_card_image.setAttribute("class", "card-img-top");
-        new_card_image.setAttribute("src", "areas/"+ active_area + "/" + card_image);
+        new_card_image.setAttribute("src", "areas/"+ active_area + "/" + card_id + "/" + card_image);
         new_card_image.setAttribute("onclick", "openLocationModal('"+ card_id +"')");
         new_card.appendChild(new_card_image);
 
@@ -236,7 +236,7 @@ function saveSettings(name, value) {
         if (card_buttons != "false") {
           for (var button_item in card_buttons) {
             var new_card_button = document.createElement("A");
-            new_card_button.setAttribute("class", "btn text-white bg-"+ card_buttons[button_item][1]);
+            new_card_button.setAttribute("class", "btn text-white "+ card_buttons[button_item][1]);
             new_card_button.setAttribute("onclick", "openMdModal('areas/"+ active_area + "/" + card_buttons[button_item][0] +"', '"+ card_id +"')");
             new_card_button.innerHTML = "<i class='material-icons'>stars</i>";
             new_card_footer.appendChild(new_card_button);
@@ -359,7 +359,7 @@ function saveSettings(name, value) {
 
         var new_modal_image = document.createElement("IMG");
         new_modal_image.setAttribute("class", "card-img-top");
-        new_modal_image.setAttribute("src", "areas/"+ active_area + "/" + modal_image);
+        new_modal_image.setAttribute("src", "areas/"+ active_area + "/" + modal_id + "/" + modal_image);
         new_modal_content.appendChild(new_modal_image);
 
         var new_modal_body = document.createElement("DIV");
@@ -378,7 +378,7 @@ function saveSettings(name, value) {
         if (modal_buttons != "false") {
           for (var button_item in modal_buttons) {
             var new_modal_button = document.createElement("A");
-            new_modal_button.setAttribute("class", "btn text-white btn-block bg-"+ modal_buttons[button_item][1]);
+            new_modal_button.setAttribute("class", "btn text-white btn-block "+ modal_buttons[button_item][1]);
             new_modal_button.setAttribute("onclick", "openMdModal('areas/"+ active_area + "/" + modal_buttons[button_item][0] +"', '"+ modal_id +"')");
             new_modal_button.innerHTML = button_item;
             new_modal_body.appendChild(new_modal_button);
@@ -393,7 +393,7 @@ function saveSettings(name, value) {
 
         $("body").append(new_modal)
 
-        $.get("areas/"+ active_area + "/" + modal_content, function(response) {
+        $.get("areas/"+ active_area + "/"+ modal_id + "/" + modal_content, function(response) {
           var markDown = new showdown.Converter();
           html = markDown.makeHtml(response);
           $('#modal_'+modal_id+' .modal-body .modal-text').append(html);
