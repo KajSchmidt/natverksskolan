@@ -1,4 +1,5 @@
-$(function () {
+$(function(){
+
   $('[data-toggle="tooltip"]').tooltip();
 	$('.rmenu-item').mouseover(function(){
 		$('i',this).tooltip('show');
@@ -6,10 +7,7 @@ $(function () {
 	$('.rmenu-item').mouseout(function(){
 		$('i',this).tooltip('hide');
 	});
-});
 
-
-(function(){
 
 	var button_left = document.getElementById('rm-button-left'),
     wrapper_left = document.getElementById('rm-wrapper-left'),
@@ -70,4 +68,4 @@ $(function () {
 	}
 	document.addEventListener('click', closeNav);
 
-})();
+});

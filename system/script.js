@@ -1,4 +1,9 @@
 
+
+//******************************************************************************
+// Init functions
+//******************************************************************************
+
       function loadArea() {
         $.getJSON("areas/" + active_area + "/area.json", function( data ) {
             createMap(63.8256912, 20.2631702, 15);
@@ -42,7 +47,48 @@
       }
 
 
-      // Map functions
+
+//******************************************************************************
+// Menu functions
+//******************************************************************************
+
+$("#rm-button-left-2").click(function(){
+  $("#select-area-modal").modal("show");
+});
+
+
+
+
+
+//******************************************************************************
+// Settings functions
+//******************************************************************************
+
+
+$("#select-area-save").click(function(){
+  saveSettings("settings_area", $("#select-area-input").val());
+  $("#select-area-modal").modal("hide");
+  location.reload();
+});
+
+
+
+function saveSettings(name, value) {
+  localStorage.setItem(name, value);
+}
+
+
+
+
+
+
+
+
+
+//******************************************************************************
+// Map functions
+//******************************************************************************
+
       function createMap(setCenterLat, setCenterLong, setZoom) {
         var mapProp= {
           center:new google.maps.LatLng(setCenterLat, setCenterLong),
@@ -50,7 +96,7 @@
           zoom:setZoom,
           disableDefaultUI: true
         };
-        window.map = new google.maps.Map(document.getElementById("Map"),mapProp);
+        window.map = new google.maps.Map(document.getElementById("map"),mapProp);
       }
 
       function createMarker(targetID, targetTitle, targetTYPE, targetLAT, targetLONG) {
@@ -70,8 +116,9 @@
       }
 
 
-
-      //Footer functions
+//******************************************************************************
+// Footer functions
+//******************************************************************************
 
       function createLocationCard(card_id, card_title, card_type, card_image, card_content, card_buttons) {
         var new_card = document.createElement("DIV");
@@ -137,7 +184,21 @@
 
 
 
-      // Modal functions
+
+
+
+
+
+
+
+
+
+
+
+
+//******************************************************************************
+// Modal functions
+//******************************************************************************
 
 
       function createMdModal() { //Create one modal used as container for all markdown content
