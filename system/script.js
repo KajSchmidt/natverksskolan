@@ -6,7 +6,7 @@
 
 $(function(){
   createEmptyModal("md-modal"); //Create empty modal to load MD-files to
-  createAreaSelect(); //Create and fill modal for area select
+  createAreaSelect(); //Create and fill modal for area selection
 });
 
 
@@ -43,10 +43,19 @@ $(function(){
 
 //******************************************************************************
 // Menu and site modals functions
+// (Construction functions for radial menus in separate file)
 //******************************************************************************
 
-$("#rm-button-left-2").click(function(){
+$("#menu-about-area").click(function(){
+  loadMdModal("areas/"+ active_area +"/area.md");
+});
+
+$("#menu-select-area").click(function(){
   $("#select-area-modal").modal("show");
+});
+
+$("#menu-about-site").click(function(){
+  loadMdModal("site.md");
 });
 
 
