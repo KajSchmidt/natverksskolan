@@ -29,7 +29,10 @@
   {
     "id": "kontor_3",
     "title": "Norrvind",
-    "buttons": "",
+    "buttons": {
+                "Kontrakt A": ["kontor_3/kontor_3a.md","olive"],
+                "Kontrakt B": ["kontor_3/kontor_3b.md", "orange"]
+              },
     "type": "office",
     "image": "kontor_3/kontor_3.jpg",
     "content": "kontor_3/kontor_3.md",

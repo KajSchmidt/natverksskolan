@@ -4,7 +4,12 @@
 // Init functions
 //******************************************************************************
 
-      function loadArea() {
+$(function(){
+  createEmptyModal("md-modal"); //Create empty modal to load MD-files to
+});
+
+
+      function loadArea() { //Called as callback at map library load
         $.getJSON("areas/" + active_area + "/area.json", function( data ) {
             createMap(63.8256912, 20.2631702, 15);
 
@@ -31,31 +36,21 @@
             });
 
           });
-
-
-          createMdModal();
-
-          /*
-          //Open modal from GET param
-          var url_string = window.location.href;
-          var url = new URL(url_string);
-          var location = url.searchParams.get("location");
-          if (location) {
-            oldopenModal("areas/" + active_area + "/" + location);
-          }
-          */
       }
 
 
 
 //******************************************************************************
-// Menu functions
+// Menu and site modals functions
 //******************************************************************************
 
 $("#rm-button-left-2").click(function(){
   $("#select-area-modal").modal("show");
 });
 
+$(".area-select-item").click(function(){
+  location.href= "?area="+ $(this).data("target");
+});
 
 
 
@@ -64,12 +59,43 @@ $("#rm-button-left-2").click(function(){
 // Settings functions
 //******************************************************************************
 
+//Variables
+var active_area;
 
-$("#select-area-save").click(function(){
-  saveSettings("settings_area", $("#select-area-input").val());
-  $("#select-area-modal").modal("hide");
-  location.reload();
+//Load settingsfile
+
+var default_area;
+var site_logo;
+var site_name;
+
+$.getJSON("site.json", function( site ) {
+  default_area = site.default_area;
+})
+.done(function(){
+
+  //URL Parameters
+  var url_string = window.location.href;
+  var url = new URL(url_string);
+
+  //Check for area
+  var area = url.searchParams.get("area");
+  if (area) {
+    saveSettings("settings_area",area);
+  }
+
+
+  //Load local storage settings
+  if (!localStorage.getItem("settings_area")) {
+    active_area = default_area;
+  }
+  else {
+    active_area = localStorage.getItem("settings_area");
+  }
+
+
 });
+
+
 
 
 
@@ -201,10 +227,10 @@ function saveSettings(name, value) {
 //******************************************************************************
 
 
-      function createMdModal() { //Create one modal used as container for all markdown content
+      function createEmptyModal(modal_id) { //Create one modal used as container for loaded content
         var new_modal = document.createElement("DIV");
         new_modal.setAttribute("class", "modal fade");
-        new_modal.setAttribute("id", "md-modal");
+        new_modal.setAttribute("id", modal_id);
         new_modal.setAttribute("tabindex", "-1");
         new_modal.setAttribute("role", "dialog");
         new_modal.setAttribute("aria-hidden", "true");
@@ -222,7 +248,7 @@ function saveSettings(name, value) {
         var new_modal_close = document.createElement("A");
         new_modal_close.setAttribute("class", "btn btn-light ml-auto");
         new_modal_close.setAttribute("data-dismiss", "modal");
-        new_modal_close.setAttribute("data-target", "md-modal");
+        new_modal_close.setAttribute("data-target", modal_id);
         new_modal_close.innerHTML = "<i class='material-icons'>close</i>";
         new_modal_header.appendChild(new_modal_close);
 
@@ -230,8 +256,6 @@ function saveSettings(name, value) {
 
         var new_modal_body = document.createElement("DIV");
         new_modal_body.setAttribute("class", "modal-body");
-        new_modal_body.setAttribute("id", "md-modal-body");
-
 
         new_modal_content.appendChild(new_modal_body);
 
@@ -247,8 +271,8 @@ function saveSettings(name, value) {
         $.get(md_file, function(response) {
           var markDown = new showdown.Converter();
           html = markDown.makeHtml(response);
-          $("#md-modal-body").empty();
-          $("#md-modal-body").append(html);
+          $("#md-modal .modal-dialog .modal-content .modal-body").empty();
+          $("#md-modal .modal-dialog .modal-content .modal-body").append(html);
         });
 
 

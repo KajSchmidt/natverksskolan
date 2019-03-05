@@ -69,6 +69,7 @@ body {
   font-size  : .8rem;
 }
 
-
-
-/* Custom bootstrap colors */
+.area-select-item {
+  cursor: pointer;
+  margin-bottom: 5px;
+}

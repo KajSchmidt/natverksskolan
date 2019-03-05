@@ -16,16 +16,8 @@
 
     <script>
 
-    // Settings
-    var default_area = "umea_0";
 
-    var active_area = "";
-    if (!localStorage.getItem("settings_area")) {
-      active_area = default_area;
-    }
-    else {
-      active_area = localStorage.getItem("settings_area");
-    }
+
 
 
 
@@ -112,6 +104,8 @@
   </div>
 
 
+
+  <!-- Static Modal for selecting area -->
   <div class="modal" tabindex="-1" role="dialog" id="select-area-modal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -121,17 +115,48 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Välj område</label>
-            <select class="form-control" id="select-area-input">
-              <option value="umea_0">Umeå 0</option>
-              <option value="umea_1">Umeå 1</option>
-            </select>
+
+          <div class="card area-select-item" data-target="umea_0">
+            <div class="card-body">
+              <div class="card-title">
+                Umeå 0
+              </div>
+              <div class="card-text">
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="select-area-save">Spara</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Stäng</button>
+
+          <div class="card area-select-item" data-target="umea_1">
+            <div class="card-body" >
+              <div class="card-title">
+                Umeå 1
+              </div>
+              <div class="card-text">
+              </div>
+            </div>
           </div>
+
+          <div class="card area-select-item" data-target="umea_2">
+            <div class="card-body" >
+              <div class="card-title">
+                Umeå 2
+              </div>
+              <div class="card-text">
+              </div>
+            </div>
+          </div>
+
+          <div class="card area-select-item" data-target="umea_3">
+            <div class="card-body" >
+              <div class="card-title">
+                Umeå 3
+              </div>
+              <div class="card-text">
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
