@@ -58,6 +58,16 @@ $("#menu-about-site").click(function(){
   loadMdModal("site.md");
 });
 
+$("#menu-help-site").click(function(){
+  loadMdModal("site.md");
+});
+
+$("#menu-help-area").click(function(){
+  window.open("https://github.com/NTIG-Umea/natverksskolan/wiki");
+});
+
+$("#menu-help-unused").click(function(){
+});
 
 function createAreaSelect() {
   createEmptyModal("select-area-modal");
