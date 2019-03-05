@@ -22,14 +22,14 @@ $(function(){
                 else { buttons_object = item.buttons; }
 
                 //create card in footer for each location
-                createLocationCard(item.id, item.title, item.type, item.image, item.content, buttons_object);
+                createLocationCard(item.id, item.title, item.pin, item.image, item.content, buttons_object);
 
                 //create hiddens modals for each location
-                createLocationModal(item.id, item.title, item.type, item.image, item.content, buttons_object);
+                createLocationModal(item.id, item.title, item.pin, item.image, item.content, buttons_object);
 
                 //create markers on map for each location
                 setTimeout(function () { //Create markers at random intervals for scatter effects
-                  createMarker(item.id, item.title, item.type, item.lat, item.long,);
+                  createMarker(item.id, item.title, item.pin, item.lat, item.long,);
                 }, Math.floor((Math.random() * 1000)));
 
 
@@ -102,7 +102,6 @@ function createAreaSelect() {
 }
 
 
-
 //******************************************************************************
 // Settings functions
 //******************************************************************************
@@ -173,13 +172,17 @@ function saveSettings(name, value) {
         window.map = new google.maps.Map(document.getElementById("map"),mapProp);
       }
 
-      function createMarker(targetID, targetTitle, targetTYPE, targetLAT, targetLONG) {
+      function createMarker(targetID, targetTitle, marker_pin, targetLAT, targetLONG) {
+        var icon = {
+            url: marker_pin, // url
+            scaledSize: new google.maps.Size(50, 50), // scaled size
+        };
         var latlong = new google.maps.LatLng(targetLAT, targetLONG);
         var marker = new google.maps.Marker({
           position:latlong,
           animation:google.maps.Animation.DROP,
           title: targetTitle,
-          icon: 'pin-'+ targetTYPE +'.png',
+          icon: icon,
           map: map
         });
 
@@ -194,7 +197,7 @@ function saveSettings(name, value) {
 // Footer functions
 //******************************************************************************
 
-      function createLocationCard(card_id, card_title, card_type, card_image, card_content, card_buttons) {
+      function createLocationCard(card_id, card_title, card_pin, card_image, card_content, card_buttons) {
         var new_card = document.createElement("DIV");
         new_card.setAttribute("id", "card_" + card_id);
         new_card.setAttribute("class", "card footer-cards bg-light");
@@ -219,7 +222,7 @@ function saveSettings(name, value) {
 
         var new_card_title = document.createElement("H6");
         new_card_title.setAttribute("class", "card-title");
-        new_card_title.innerHTML = card_title;
+        new_card_title.innerHTML = "<img src='"+ card_pin +"'> "+ card_title;
         new_card_body.appendChild(new_card_title);
 
         var new_card_text = document.createElement("P");
@@ -246,7 +249,7 @@ function saveSettings(name, value) {
 
         $("#footer-content").append(new_card)
 
-        $.get("areas/"+ active_area + "/" + card_content, function(response) {
+        $.get("areas/"+ active_area + "/" + card_id + "/" + card_content, function(response) {
           var markDown = new showdown.Converter();
           html = markDown.makeHtml(response);
           $('#card_'+card_id+' .card-body .card-text').append(html);

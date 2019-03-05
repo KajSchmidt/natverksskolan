@@ -27,6 +27,18 @@ body {
   overflow-x: hidden;
 }
 
+.card-deck {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  align-items: stretch;
+}
+.card-deck .card {
+  display: block;
+  flex-basis: 33.3%; /* change this value for each breakpoint*/
+  margin-bottom: 20px;
+}
+
 .footer-cards {
   max-width: 12rem;
   max-height: 20rem;
@@ -44,6 +56,10 @@ body {
   -webkit-line-clamp: 1; /* number of lines to show */
   line-height: 1rm;        /* fallback */
   max-height: 1rm;       /* fallback */
+}
+
+.footer-cards .card-body .card-title img{
+  height: 2em;
 }
 
 .footer-cards .card-body .card-text {
