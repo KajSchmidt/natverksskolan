@@ -6,6 +6,7 @@
 
 $(function(){
   createEmptyModal("md-modal"); //Create empty modal to load MD-files to
+  createAreaSelect(); //Create and fill modal for area select
 });
 
 
@@ -48,10 +49,38 @@ $("#rm-button-left-2").click(function(){
   $("#select-area-modal").modal("show");
 });
 
-$(".area-select-item").click(function(){
-  location.href= "?area="+ $(this).data("target");
-});
 
+function createAreaSelect() {
+  createEmptyModal("select-area-modal");
+
+  $.getJSON("site.json", function( site ) {
+    $.each(site.areas, function(key, id){
+      $.getJSON("areas/"+ id + "/area.json", function( area ) {
+        var area_card = "<div class='card area-select-item' data-target="+ area.id +">"
+                        +"<div class='card-body'><div class='card-title'><h6>"
+                        + area.name
+                        +"</h6></div><div class='card-text'>"
+                        + area.description
+                        +"</div></div></div>";
+        $("#select-area-modal .modal-dialog .modal-content .modal-body").append(area_card);
+      })
+      .done(function(){
+        $(".area-select-item").click(function(){
+          location.href= "?area="+ $(this).data("target");
+        });
+
+        $(".area-select-item").mouseover(function(){
+          $(this).addClass("bg-lime");
+        });
+
+        $(".area-select-item").mouseout(function(){
+          $(this).removeClass("bg-lime");
+        });
+
+      });
+    });
+  });
+}
 
 
 
