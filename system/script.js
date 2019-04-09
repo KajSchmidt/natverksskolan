@@ -1,43 +1,97 @@
 
+//******************************************************************************
+// Settings functions
+//******************************************************************************
+
+//Variables
+var active_area;
+var active_location;
+
+//Load settingsfile
+
+var default_area;
+var site_logo;
+var site_name;
+
+$.getJSON("site.json", function( site ) {
+  default_area = site.default_area;
+})
+.done(function(){
+
+  //URL Parameters
+  var url_string = window.location.href;
+  var url = new URL(url_string);
+
+  //Check for area
+  var area = url.searchParams.get("area");
+  if (area) {
+    saveSettings("settings_area",area);
+  }
+
+  //Load local storage settings
+  if (!localStorage.getItem("settings_area")) {
+    active_area = default_area;
+  }
+  else {
+    active_area = localStorage.getItem("settings_area");
+  }
+
+
+});
+
+
+function saveSettings(name, value) {
+  localStorage.setItem(name, value);
+}
+
+
+
 
 //******************************************************************************
 // Init functions
 //******************************************************************************
 
-$(function(){
+$( window ).on( "load", function() {
+  loadArea();
   createEmptyModal("md-modal"); //Create empty modal to load MD-files to
   createAreaSelect(); //Create and fill modal for area selection
+  if (active_location) {
+    openLocationModal(active_location);
+  }
 });
 
 
-      function loadArea() { //Called as callback at map library load
-        $.getJSON("areas/" + active_area + "/area.json", function( data ) {
-            createMap(63.8256912, 20.2631702, 15);
+function loadArea() {
 
-            $.getJSON("areas/" + active_area + "/locations.json", function( data ) {
-              $.each(data, function(key, item) {
+  $.getJSON("areas/" + active_area + "/area.json", function( data ) {
+      createMap(63.8256912, 20.2631702, 15);
 
-                var buttons_object;
-                if (item.buttons == "") { buttons_object = "false"; }
-                else { buttons_object = item.buttons; }
+      $.getJSON("areas/" + active_area + "/locations.json", function( data ) {
+        $.each(data, function(key, item) {
 
-                //create card in footer for each location
-                createLocationCard(item.id, item.title, item.pin, item.image, item.content, buttons_object);
+          var buttons_object;
+          if (item.buttons == "") { buttons_object = "false"; }
+          else { buttons_object = item.buttons; }
 
-                //create hiddens modals for each location
-                createLocationModal(item.id, item.title, item.pin, item.image, item.content, buttons_object);
+          //create card in footer for each location
+          createLocationCard(item.id, item.title, item.pin, item.image, item.content, buttons_object);
 
-                //create markers on map for each location
-                setTimeout(function () { //Create markers at random intervals for scatter effects
-                  createMarker(item.id, item.title, item.pin, item.lat, item.long,);
-                }, Math.floor((Math.random() * 1000)));
+          //create hiddens modals for each location
+          createLocationModal(item.id, item.title, item.pin, item.image, item.content, buttons_object);
+
+          //create markers on map for each location
+          setTimeout(function () { //Create markers at random intervals for scatter effects
+            createMarker(item.id, item.title, item.pin, item.lat, item.long,);
+          }, Math.floor((Math.random() * 1000)));
 
 
-              });
-            });
+        });
+      });
 
-          });
-      }
+    });
+}
+
+
 
 
 
@@ -66,7 +120,7 @@ $("#menu-help-area").click(function(){
   window.open("https://github.com/NTIG-Umea/natverksskolan/wiki");
 });
 
-$("#menu-help-unused").click(function(){
+$("#menu-help-chat").click(function(){
 });
 
 function createAreaSelect() {
@@ -100,62 +154,6 @@ function createAreaSelect() {
     });
   });
 }
-
-
-//******************************************************************************
-// Settings functions
-//******************************************************************************
-
-//Variables
-var active_area;
-
-//Load settingsfile
-
-var default_area;
-var site_logo;
-var site_name;
-
-$.getJSON("site.json", function( site ) {
-  default_area = site.default_area;
-})
-.done(function(){
-
-  //URL Parameters
-  var url_string = window.location.href;
-  var url = new URL(url_string);
-
-  //Check for area
-  var area = url.searchParams.get("area");
-  if (area) {
-    saveSettings("settings_area",area);
-  }
-
-
-  //Load local storage settings
-  if (!localStorage.getItem("settings_area")) {
-    active_area = default_area;
-  }
-  else {
-    active_area = localStorage.getItem("settings_area");
-  }
-
-
-});
-
-
-
-
-
-function saveSettings(name, value) {
-  localStorage.setItem(name, value);
-}
-
-
-
-
-
-
-
 
 
 //******************************************************************************
@@ -257,16 +255,6 @@ function saveSettings(name, value) {
 
 
       }
-
-
-
-
-
-
-
-
-
-
 
 
 
