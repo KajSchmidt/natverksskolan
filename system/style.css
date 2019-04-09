@@ -9,7 +9,7 @@ body {
 }
 
 #site-logo {
-  background-image: url('/nti-sitelogo-white.png');
+  background-image: url('nti-sitelogo-white.png');
   background-size: contain;
   height: 100px;
   width: 100px;
