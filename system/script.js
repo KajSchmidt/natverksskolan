@@ -222,7 +222,7 @@ function saveSettings(name, value) {
 
         var new_card_title = document.createElement("H6");
         new_card_title.setAttribute("class", "card-title");
-        new_card_title.innerHTML = "<img src='"+ card_pin +"'> "+ card_title;
+        new_card_title.innerHTML =card_title;
         new_card_body.appendChild(new_card_title);
 
         var new_card_text = document.createElement("P");
@@ -333,7 +333,7 @@ function saveSettings(name, value) {
 
 
       //Create separate modals for all locations
-      function createLocationModal(modal_id, modal_title, modal_type, modal_image, modal_content, modal_buttons) {
+      function createLocationModal(modal_id, modal_title, modal_pin, modal_image, modal_content, modal_buttons) {
         var new_modal = document.createElement("DIV");
         new_modal.setAttribute("class", "modal fade");
         new_modal.setAttribute("id", "modal_" + modal_id);
