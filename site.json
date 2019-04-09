@@ -2,10 +2,7 @@
   "name":"Nätverksskolan",
   "default_area":"umea_0",
   "areas":[
-    "umea_0",
-    "umea_1",
-    "umea_2",
-    "umea_3"
+    "umea_0"
   ],
   "site_logo":"nti-sitelogo-white.png"
 }
