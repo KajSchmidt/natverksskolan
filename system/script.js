@@ -55,9 +55,6 @@ $( window ).on( "load", function() {
   loadArea();
   createEmptyModal("md-modal"); //Create empty modal to load MD-files to
   createAreaSelect(); //Create and fill modal for area selection
-  if (active_location) {
-    openLocationModal(active_location);
-  }
 });
 
 
