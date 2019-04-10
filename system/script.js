@@ -5,14 +5,14 @@
 
 //Variables
 var active_area;
-var active_location;
 
-//Load settingsfile
 
 var default_area;
 var site_logo;
 var site_name;
 
+
+//Load settingsfile
 $.getJSON("site.json", function( site ) {
   default_area = site.default_area;
 })
@@ -52,7 +52,6 @@ function saveSettings(name, value) {
 //******************************************************************************
 
 $(document).ready(function(){
-  while (!active_area) { }
   loadArea();
   createEmptyModal("md-modal"); //Create empty modal to load MD-files to
   createAreaSelect(); //Create and fill modal for area selection
