@@ -51,8 +51,7 @@ function saveSettings(name, value) {
 // Init functions
 //******************************************************************************
 
-$( window ).on( "load", function() {
-  while (active_area == "") { }
+$(document).ready(function(){
   loadArea();
   createEmptyModal("md-modal"); //Create empty modal to load MD-files to
   createAreaSelect(); //Create and fill modal for area selection
