@@ -1,58 +1,44 @@
 
 //******************************************************************************
-// Settings functions
+// Init functions
 //******************************************************************************
 
 //Variables
+
 var active_area;
-
-
 var default_area;
 var site_logo;
 var site_name;
 
 
-//Load settingsfile
-$.getJSON("site.json", function( site ) {
-  default_area = site.default_area;
-})
-.done(function(){
-
-  //URL Parameters
-  var url_string = window.location.href;
-  var url = new URL(url_string);
-
-  //Check for area
-  var area = url.searchParams.get("area");
-  if (area) {
-    saveSettings("settings_area",area);
-  }
-
-  //Load local storage settings
-  if (!localStorage.getItem("settings_area")) {
-    active_area = default_area;
-  }
-  else {
-    active_area = localStorage.getItem("settings_area");
-  }
-
-
-});
-
-
-function saveSettings(name, value) {
-  localStorage.setItem(name, value);
-}
-
-
-
-
-//******************************************************************************
-// Init functions
-//******************************************************************************
-
 $(document).ready(function(){
-  loadArea();
+
+  $.getJSON("site.json", function( site ) {
+    default_area = site.default_area;
+  })
+  .done(function(){
+
+    //URL Parameters
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+
+    //Check for area
+    var area = url.searchParams.get("area");
+    if (area) {
+      saveSettings("settings_area",area);
+    }
+
+    //Load local storage settings
+    if (!localStorage.getItem("settings_area")) {
+      active_area = default_area;
+    }
+    else {
+      active_area = localStorage.getItem("settings_area");
+    }
+
+    loadArea();
+
+  });
   createEmptyModal("md-modal"); //Create empty modal to load MD-files to
   createAreaSelect(); //Create and fill modal for area selection
 });
@@ -61,7 +47,7 @@ $(document).ready(function(){
 function loadArea() {
 
   $.getJSON("areas/" + active_area + "/area.json", function( data ) {
-      createMap(63.8256912, 20.2631702, 15);
+      createMap(data.centerlat, data.centerlong, data.zoom);
 
       $.getJSON("areas/" + active_area + "/locations.json", function( data ) {
         $.each(data, function(key, item) {
@@ -88,6 +74,16 @@ function loadArea() {
     });
 }
 
+
+//******************************************************************************
+// Settings functions
+//******************************************************************************
+
+//Save in local storage
+
+function saveSettings(name, value) {
+  localStorage.setItem(name, value);
+}
 
 
 
