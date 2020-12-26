@@ -1,0 +1,122 @@
+[
+  {
+    "id": "k1",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-office.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.8249697,
+    "long": 20.2661621
+  },
+  {
+    "id": "k2",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-office.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.8281024,
+    "long": 20.2511672
+  },
+  {
+    "id": "k3",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-office.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.830258,
+    "long": 20.261461
+  },
+  {
+    "id": "k4",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-office.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.8261927,
+    "long": 20.2542813
+  },
+  {
+    "id": "k5",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-office.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.825447,
+    "long": 20.264229
+  },
+  {
+    "id": "k6",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-office.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.8219803,
+    "long": 20.2517275
+  },
+  {
+    "id": "c1",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-campus.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.828096,
+    "long": 20.269352
+  },
+  {
+    "id": "c2",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-campus.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.826150,
+    "long": 20.275310
+  },
+  {
+    "id": "c3",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-campus.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.827478,
+    "long": 20.244692
+  },
+  {
+    "id": "h1",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-hotell.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.825279,
+    "long": 20.269738
+  },
+  {
+    "id": "h2",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-hotell.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.825808,
+    "long": 20.258703
+  },
+  {
+    "id": "p1",
+    "title": "?",
+    "buttons": "",
+    "pin": "pin-serviceprovider.svg",
+    "image": "image.jpg",
+    "content": "location.md",
+    "lat": 63.822844,
+    "long": 20.252280
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "k1",
+    "title": "Kontor 1",
+    "buttons": {
+                "Kontrakt A: Nybyggnad": ["kontor_1/kontor_1a.md","olive"],
+                "Kontrakt B": ["kontor_1/kontor_1b.md", "maroon"]
+              },
+    "type": "office",
+    "image": "kontor_1/kontor_1.jpg",
+    "content": "kontor_1/kontor_1.md",
+    "lat": 63.8249697,
+    "long": 20.2661621
+  }
+]

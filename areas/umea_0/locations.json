@@ -1,8 +1,67 @@
 [
   {
+    "id": "kontor_1",
     "title": "PL Revision",
-    "content": "kontor_1a",
+    "buttons": {
+                "Kontrakt A: Nybyggnad": ["kontor_1/kontor_1a.md","bg-olive"],
+                "Kontrakt B": ["kontor_1/kontor_1b.md", "bg-maroon"]
+              },
+    "pin": "pin-office.svg",
+    "image": "kontor_1.jpg",
+    "content": "kontor_1.md",
     "lat": 63.8249697,
     "long": 20.2661621
+  },
+  {
+    "id": "kontor_2",
+    "title": "Vita Tänders Tandvård",
+    "buttons": {
+                "Kontrakt A": ["kontor_2/kontor_2a.md","bg-olive"],
+                "Kontrakt B": ["kontor_2/kontor_2b.md", "bg-maroon"],
+                "Kontrakt C": ["kontor_2/kontor_2c.md", "bg-blue"]
+              },
+    "pin": "pin-office.svg",
+    "image": "kontor_2.jpg",
+    "content": "kontor_2.md",
+    "lat": 63.8281024,
+    "long": 20.2511672
+  },
+  {
+    "id": "kontor_3",
+    "title": "Norrvind",
+    "buttons": {
+                "Kontrakt A": ["kontor_3/kontor_3a.md","bg-olive"],
+                "Kontrakt B": ["kontor_3/kontor_3b.md", "bg-orange"]
+              },
+    "pin": "pin-office.svg",
+    "image": "kontor_3.jpg",
+    "content": "kontor_3.md",
+    "lat": 63.830258,
+    "long": 20.261461
+  },
+  {
+    "id": "kontor_4",
+    "title": "MIAB",
+    "buttons": {
+                "Kontrakt A": ["kontor_4/kontor_4a.md","bg-olive"],
+                "Kontrakt B": ["kontor_4/kontor_4b.md", "bg-orange"]
+              },
+    "pin": "pin-office.svg",
+    "image": "kontor_4.jpg",
+    "content": "kontor_4.md",
+    "lat": 63.8261927,
+    "long": 20.2542813
+  },
+  {
+    "id": "kontor_6",
+    "title": "NTL",
+    "buttons": {
+                "Kontrakt A": ["kontor_6/kontor_6a.md","bg-red"]
+              },
+    "pin": "pin-office.svg",
+    "image": "kontor_6.jpg",
+    "content": "kontor_6.md",
+    "lat": 63.8219803,
+    "long": 20.2517275
   }
 ]

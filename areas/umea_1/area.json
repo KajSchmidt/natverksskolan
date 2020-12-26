@@ -1,0 +1,8 @@
+{
+  "id":"umea_1",
+  "name": "Umeå 1",
+  "description": "För testning",
+  "centerlat": 63.8256912,
+  "centerlong": 20.2631702,
+  "zoom": 15
+}

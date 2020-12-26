@@ -1,0 +1,210 @@
+/* Adapted from https://tympanus.net/codrops/2013/08/09/building-a-circular-navigation-with-css-transforms/ */
+
+#radial-menu-left {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+#radial-menu-right {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+}
+
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+
+
+.csstransforms .rm-wrapper {
+  font-size: 1em;
+  width: 26em;
+  height: 26em;
+  overflow: hidden;
+  position: absolute;
+  z-index: 110;
+  border-radius: 50%;
+  -webkit-transform: scale(0.1);
+  -ms-transform: scale(0.1);
+  -moz-transform: scale(0.1);
+  transform: scale(0.1);
+  pointer-events: none;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+#rm-wrapper-left {
+    left: -13em;
+    top: -13em;
+}
+
+#rm-wrapper-right {
+    right: -13em;
+    top: -13em;
+}
+
+
+.csstransforms .opened-nav {
+  border-radius: 50%;
+  pointer-events: auto;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.rm-overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  transition: all .3s ease;
+  z-index: 2;
+}
+
+.rm-overlay.on-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.rm-button {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  font-size: 1.4em;
+  height: 6em;
+  width: 6em;
+  position: absolute;
+  border-radius: 50%;
+  z-index: 111;
+}
+
+#rm-button-left {
+    left: -3em;
+    top: -3em;
+}
+
+#rm-button-left i {
+  position: absolute;
+  bottom: 1.2em;
+  right: 1.2em;
+}
+
+#rm-button-right {
+    right: -3em;
+    top: -3em;
+}
+
+#rm-button-right i {
+  position: absolute;
+  bottom: 1.2em;
+  left: 1.2em;
+}
+
+.csstransforms .rm-wrapper li {
+  position: absolute;
+  font-size: 1.5em;
+  width: 10em;
+  height: 10em;
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+  overflow: hidden;
+  left: 50%;
+  top: 50%;
+  margin-top: -1em;
+  margin-left: -10em;
+  -webkit-transition: border .3s ease;
+  -moz-transition: border .3s ease;
+  transition: border .3s ease;
+}
+
+.csstransforms .rm-wrapper li a {
+  display: block;
+  font-size: 1.18em;
+  height: 14.5em;
+  width: 14.5em;
+  position: absolute;
+  bottom: -7.25em;
+  right: -7.25em;
+  border-radius: 50%;
+  padding-top: 1em;
+  text-align: center;
+  -webkit-transform: skew(-50deg) rotate(-70deg) scale(1);
+  -ms-transform: skew(-50deg) rotate(-70deg) scale(1);
+  -moz-transform: skew(-50deg) rotate(-70deg) scale(1);
+  transform: skew(-50deg) rotate(-70deg) scale(1);
+  -webkit-backface-visibility: hidden;
+}
+
+.csstransforms .rm-wrapper li a i {
+  transform: rotate(180deg);
+}
+
+/* for a central angle x, the list items must be skewed by 90-x degrees
+in our case x=40deg so skew angle is 50deg
+items should be rotated by x, minus (sum of angles - 180)2s (for this demo) */
+
+.csstransforms #rm-wrapper-left li:first-child {
+  -webkit-transform: rotate(165deg) skew(50deg);
+  -ms-transform: rotate(165deg) skew(50deg);
+  -moz-transform: rotate(165deg) skew(50deg);
+  transform: rotate(165deg) skew(50deg);
+}
+
+.csstransforms #rm-wrapper-left li:nth-child(2) {
+  -webkit-transform: rotate(205deg) skew(50deg);
+  -ms-transform: rotate(205deg) skew(50deg);
+  -moz-transform: rotate(205deg) skew(50deg);
+  transform: rotate(205deg) skew(50deg);
+}
+
+.csstransforms #rm-wrapper-left li:nth-child(3) {
+  -webkit-transform: rotate(245deg) skew(50deg);
+  -ms-transform: rotate(245deg) skew(50deg);
+  -moz-transform: rotate(245deg) skew(50deg);
+  transform: rotate(245deg) skew(50deg);
+}
+
+
+.csstransforms #rm-wrapper-right li:first-child {
+  -webkit-transform: rotate(-105deg) skew(50deg);
+  -ms-transform: rotate(-105deg) skew(50deg);
+  -moz-transform: rotate(-105deg) skew(50deg);
+  transform: rotate(-105deg) skew(50deg)
+}
+
+.csstransforms #rm-wrapper-right li:nth-child(2) {
+  -webkit-transform: rotate(-65deg) skew(50deg);
+  -ms-transform: rotate(-65deg) skew(50deg);
+  -moz-transform: rotate(-65deg) skew(50deg);
+  transform: rotate(-65deg) skew(50deg);
+}
+
+.csstransforms #rm-wrapper-right li:nth-child(3) {
+  -webkit-transform: rotate(-25deg) skew(50deg);
+  -ms-transform: rotate(-25deg) skew(50deg);
+  -moz-transform: rotate(-25deg) skew(50deg);
+  transform: rotate(-25deg) skew(50deg);
+}

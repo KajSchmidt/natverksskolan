@@ -1,4 +1,7 @@
 {
+  "id": "umea_0",
+  "name": "Umeå 2019",
+  "description":"Område med lite olika företag med olika behov.",
   "centerlat": 63.8256912,
   "centerlong": 20.2631702,
   "zoom": 15
